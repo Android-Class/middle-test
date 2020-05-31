@@ -3,9 +3,9 @@
 
 
 
-#功能1:时间戳的显示
+# 功能1:时间戳的显示
 
-##1.为了实现时间戳的显示,先在layout.plus_time.xml(原noteslist_item.xml)中修改视图
+## 1.为了实现时间戳的显示,先在layout.plus_time.xml(原noteslist_item.xml)中修改视图
 
 
    <LinearLayout

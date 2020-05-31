@@ -53,7 +53,9 @@
        
 
 3.将修改日期借由SimpleCursorAdapter放入list中
+(SimpleCursorAdapter作为适配器将内容传入layout文件"plus_time",并将plus_time作为listView使用
 
+![image](https://github.com/Android-Class/middle-test/blob/master/2.png)
 
    String[] dataColumns = { NotePad.Notes.COLUMN_NAME_TITLE ,NotePad.Notes.COLUMN_NAME_MODIFICATION_DATE} ;
 
@@ -69,7 +71,7 @@
                       viewIDs
               );
 
-        setListAdapter(adapter);
+        setListAdapter(adapter);       //这句必不可少
         
 
 4.创建修改日期格式的方法,用于将长整型的数据转换为时间数据
@@ -81,6 +83,10 @@
     
 
 5.在NotePadProvider中的insert方法里修改创建数据时时间的格式
+(使用步骤4的方法将长整型时间转换为标准时间显示)
+
+![image](https://github.com/Android-Class/middle-test/blob/master/4.png)
+
 
         String now=getFormatedDateTime("yyyy-MM-dd HH:mm:ss",System.currentTimeMillis());
             
@@ -117,13 +123,17 @@
 
 1.在list_options_menu中加入搜索按钮
 
-   <item
+
+![image](https://github.com/Android-Class/middle-test/blob/master/2-5.png)
+
+
+   <item              //item指明是菜单中的选项
         android:id="@+id/search"
 
         android:icon="@android:drawable/ic_menu_zoom"
         android:title="Search"
         app:actionViewClass="android.widget.SearchView"
-        app:showAsAction="always" />
+        app:showAsAction="always" />        //表示会出现在界面
         
         
         
@@ -204,7 +214,7 @@
             android:label="NoteSearch"
             >
 
-            <intent-filter>
+            <intent-filter>                   //作为开启NoteSearch时的索引
                 <action android:name="android.intent.action.NoteSearch" />
                 <action android:name="android.intent.action.SEARCH" />
                 <action android:name="android.intent.action.SEARCH_LONG_PRESS" />
@@ -217,13 +227,14 @@
 
 
 3.NoteSearch使用note_search视图
+(SearchView作为搜索框)(ListView作为搜索后进行查看的列表)
  
  <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <SearchView
+    <SearchView             //作为搜索框
         android:id="@+id/search_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -241,6 +252,8 @@
 
 4.在NotesList的onOptionsItemSelected中添加监听
  
+ 
+ ![image](https://github.com/Android-Class/middle-test/blob/master/2-9.png)
    public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
         case R.id.menu_add:

@@ -32,6 +32,7 @@
 2.在NotePadProvider中修改创建时间和修改时间的类型为TEXT
 (用于在后面显示日期时可以使用字符串格式)
 
+![image]https://github.com/Android-Class/middle-test/blob/master/1.png
 
 
    @Override

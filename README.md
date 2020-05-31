@@ -154,7 +154,7 @@
         
         
 ## 2.添加新类NoteSearch作为搜索的新界面
-该类继承ListActivity并实现SearchView.OnQueryTextListener接口
+该类继承ListActivity并实现SearchView.OnQueryTextListener接口,相当于noteslist不过多了一个搜索的接口
 
 ##########################################################################################################
  ##########################################################################################################
@@ -182,12 +182,15 @@
 
     @Override
     public boolean onQueryTextChange(String s) { //Test改变的时候执行的内容
-        //Text发生改变时执行的内容
+    
+    
+        //作为数据库中的查询语句
         String selection = NotePad.Notes.COLUMN_NAME_TITLE + " Like ? ";//查询条件
         String[] selectionArgs = { "%"+s+"%" };//查询条件参数，配合selection参数使用,%通配多个字符
+        
 
-        //查询数据库中的内容,当我们使用 SQLiteDatabase.query()方法时，就会得到Cursor对象， Cursor所指向的就是每一条数据。
-        //managedQuery(Uri, String[], String, String[], String)等同于Context.getContentResolver().query()
+
+        //查询数据库中的内容,当我们使用 SQLiteDatabase.query()方法时，就会得到Cursor对象， Cursor所指向的就是每一条数据
         Cursor cursor = managedQuery(
                 getIntent().getData(),            // Use the default content URI for the provider.用于ContentProvider查询的URI，从这个URI获取数据
                 PROJECTION,                       // Return the note ID and title for each note. and modifcation date.用于标识uri中有哪些columns需要包含在返回的Cursor对象中
@@ -196,7 +199,8 @@
                 NotePad.Notes.DEFAULT_SORT_ORDER  // Use the default sort order.查询结果的排序方式，按照某个columns来排序，例：String sortOrder = NotePad.Notes.COLUMN_NAME_TITLE
         );
 
-        //一个简单的适配器，将游标中的数据映射到布局文件中的TextView控件或者ImageView控件中
+
+        //一个简单的适配器，将游标中的数据映射到布局文件中的listView
         String[] dataColumns = { NotePad.Notes.COLUMN_NAME_TITLE ,  NotePad.Notes.COLUMN_NAME_MODIFICATION_DATE };
         int[] viewIDs = { R.id.textView , R.id.textView3 };
         SimpleCursorAdapter adapter = new SimpleCursorAdapter(

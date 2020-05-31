@@ -36,7 +36,7 @@
 
 
 
-
+```
    @Override
        public void onCreate(SQLiteDatabase db) {
            db.execSQL("CREATE TABLE " + NotePad.Notes.TABLE_NAME + " ("
@@ -52,7 +52,7 @@
 
         //   onUpgrade(db,1,2);
        }
-       
+```       
 
 
 
@@ -64,7 +64,7 @@
 
 
 
-
+```
    String[] dataColumns = { NotePad.Notes.COLUMN_NAME_TITLE ,NotePad.Notes.COLUMN_NAME_MODIFICATION_DATE} ;
 
         int[] viewIDs = { R.id.textView ,R.id.textView3 };
@@ -80,19 +80,19 @@
               );
 
         setListAdapter(adapter);       //这句必不可少
-        
+ ```       
 
 4.创建修改日期格式的方法,用于将长整型的数据转换为时间数据
  
  ![image](https://github.com/Android-Class/middle-test/blob/master/3.png)
  
- 
+ ```
  
  public static String getFormatedDateTime(String pattern, long dateTime) {
         SimpleDateFormat sDateFormat = new SimpleDateFormat(pattern);
         return sDateFormat.format(new Date(dateTime + 0));
     }
-    
+ ```
 
 5.在NotePadProvider中的insert方法里修改创建数据时时间的格式
 (使用步骤4的方法将长整型时间转换为标准时间显示)
@@ -100,7 +100,7 @@
 ![image](https://github.com/Android-Class/middle-test/blob/master/4.png)
 
 
-
+```
 
         String now=getFormatedDateTime("yyyy-MM-dd HH:mm:ss",System.currentTimeMillis());
             
@@ -113,10 +113,10 @@
         }
 
 
-
+```
 
 6.依法炮制在NoteEditor的更新方法中改变日期的显示格式
- 
+ ```
  private final void updateNote(String text, String title) {
 
         // Sets up a map to contain values to be updated in the provider.
@@ -127,7 +127,7 @@
      ....
      }
 
-
+```
 
 
 
@@ -141,7 +141,7 @@
 ![image](https://github.com/Android-Class/middle-test/blob/master/2-5.png)
 
 
-
+```
 
    <item              //item指明是菜单中的选项
         android:id="@+id/search"
@@ -150,7 +150,7 @@
         android:title="Search"
         app:actionViewClass="android.widget.SearchView"
         app:showAsAction="always" />        //表示会出现在界面
-        
+  ```      
         
         
 2.添加新类NoteSearch作为搜索的新界面
@@ -159,7 +159,7 @@
 ##########################################################################################################
  ##########################################################################################################
  ##########################################################################################################
- 
+ ```
  public class NoteSearch extends ListActivity implements SearchView.OnQueryTextListener {
 
     private SearchView mSearchView;
@@ -216,7 +216,7 @@
     }
 }
 
-
+```
 
 ###########################################################################################################
 ##########################################################################################################
@@ -224,7 +224,7 @@
  
 2.5  在mainfests中加入NoteSearch的intent
 
-
+```
  <activity
             android:name=".NoteSearch"
             android:label="NoteSearch"
@@ -240,11 +240,11 @@
                 <!--2.vnd.android.cursor.item 代表返回结果为单列数据-->
             </intent-filter>
         </activity>
-
+```
 
 3.NoteSearch使用note_search视图
 (SearchView作为搜索框)(ListView作为搜索后进行查看的列表)
- 
+ ```
  <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
@@ -265,7 +265,7 @@
     </ListView>
 </LinearLayout>
  
-
+```
 4.在NotesList的onOptionsItemSelected中添加监听
   
  ![image](https://github.com/Android-Class/middle-test/blob/master/2-9.png)
@@ -273,7 +273,7 @@
  
  
  
- 
+ ```
    public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
         case R.id.menu_add:
@@ -301,5 +301,5 @@
             return super.onOptionsItemSelected(item);
         }
     }
- 
+ ```
  

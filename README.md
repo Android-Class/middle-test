@@ -29,7 +29,7 @@
     </LinearLayout>
     
     
-2.在NotePadProvider中修改创建时间和修改时间的类型为TEXT
+## 2.在NotePadProvider中修改创建时间和修改时间的类型为TEXT
 (用于在后面显示日期时可以使用字符串格式)
 
 ![image](https://github.com/Android-Class/middle-test/blob/master/1.png)
@@ -56,7 +56,7 @@
 
 
 
-3.将修改日期借由SimpleCursorAdapter放入list中
+## 3.将修改日期借由SimpleCursorAdapter放入list中
 (SimpleCursorAdapter作为适配器将内容传入layout文件"plus_time",并将plus_time作为listView使用
 
 
@@ -82,7 +82,7 @@
         setListAdapter(adapter);       //这句必不可少
  ```       
 
-4.创建修改日期格式的方法,用于将长整型的数据转换为时间数据
+## 4.创建修改日期格式的方法,用于将长整型的数据转换为时间数据
  
  ![image](https://github.com/Android-Class/middle-test/blob/master/3.png)
  
@@ -94,7 +94,7 @@
     }
  ```
 
-5.在NotePadProvider中的insert方法里修改创建数据时时间的格式
+## 5.在NotePadProvider中的insert方法里修改创建数据时时间的格式
 (使用步骤4的方法将长整型时间转换为标准时间显示)
 
 ![image](https://github.com/Android-Class/middle-test/blob/master/4.png)
@@ -115,7 +115,7 @@
 
 ```
 
-6.依法炮制在NoteEditor的更新方法中改变日期的显示格式
+## 6.依法炮制在NoteEditor的更新方法中改变日期的显示格式
  ```
  private final void updateNote(String text, String title) {
 
@@ -131,11 +131,11 @@
 
 
 
-2.增加搜索日记的功能
+# 2.增加搜索日记的功能
 大概思路:在标题栏添加一个搜索按钮,点击按钮后进入一个新界面进行搜索
 
 
-1.在list_options_menu中加入搜索按钮
+## 1.在list_options_menu中加入搜索按钮
 
 
 ![image](https://github.com/Android-Class/middle-test/blob/master/2-5.png)
@@ -153,7 +153,7 @@
   ```      
         
         
-2.添加新类NoteSearch作为搜索的新界面
+## 2.添加新类NoteSearch作为搜索的新界面
 该类继承ListActivity并实现SearchView.OnQueryTextListener接口
 
 ##########################################################################################################
@@ -222,7 +222,7 @@
 ##########################################################################################################
 ##########################################################################################################
  
-2.5  在mainfests中加入NoteSearch的intent
+## 2.5  在mainfests中加入NoteSearch的intent
 
 ```
  <activity
@@ -242,7 +242,7 @@
         </activity>
 ```
 
-3.NoteSearch使用note_search视图
+## 3.NoteSearch使用note_search视图
 (SearchView作为搜索框)(ListView作为搜索后进行查看的列表)
  ```
  <?xml version="1.0" encoding="utf-8"?>
@@ -266,7 +266,7 @@
 </LinearLayout>
  
 ```
-4.在NotesList的onOptionsItemSelected中添加监听
+## 4.在NotesList的onOptionsItemSelected中添加监听
   
  ![image](https://github.com/Android-Class/middle-test/blob/master/2-9.png)
  

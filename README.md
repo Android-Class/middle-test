@@ -35,6 +35,8 @@
 ![image](https://github.com/Android-Class/middle-test/blob/master/1.png)
 
 
+
+
    @Override
        public void onCreate(SQLiteDatabase db) {
            db.execSQL("CREATE TABLE " + NotePad.Notes.TABLE_NAME + " ("
@@ -52,10 +54,16 @@
        }
        
 
+
+
 3.将修改日期借由SimpleCursorAdapter放入list中
 (SimpleCursorAdapter作为适配器将内容传入layout文件"plus_time",并将plus_time作为listView使用
 
+
 ![image](https://github.com/Android-Class/middle-test/blob/master/2.png)
+
+
+
 
    String[] dataColumns = { NotePad.Notes.COLUMN_NAME_TITLE ,NotePad.Notes.COLUMN_NAME_MODIFICATION_DATE} ;
 
@@ -76,6 +84,10 @@
 
 4.创建修改日期格式的方法,用于将长整型的数据转换为时间数据
  
+ ![image](https://github.com/Android-Class/middle-test/blob/master/3.png)
+ 
+ 
+ 
  public static String getFormatedDateTime(String pattern, long dateTime) {
         SimpleDateFormat sDateFormat = new SimpleDateFormat(pattern);
         return sDateFormat.format(new Date(dateTime + 0));
@@ -86,6 +98,8 @@
 (使用步骤4的方法将长整型时间转换为标准时间显示)
 
 ![image](https://github.com/Android-Class/middle-test/blob/master/4.png)
+
+
 
 
         String now=getFormatedDateTime("yyyy-MM-dd HH:mm:ss",System.currentTimeMillis());
@@ -125,6 +139,8 @@
 
 
 ![image](https://github.com/Android-Class/middle-test/blob/master/2-5.png)
+
+
 
 
    <item              //item指明是菜单中的选项
@@ -251,9 +267,13 @@
  
 
 4.在NotesList的onOptionsItemSelected中添加监听
- 
- 
+  
  ![image](https://github.com/Android-Class/middle-test/blob/master/2-9.png)
+ 
+ 
+ 
+ 
+ 
    public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
         case R.id.menu_add:
